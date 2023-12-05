@@ -53,6 +53,8 @@ public class HelloApplication extends Application {
 
             if (Prisijungimas.patikrintiPrisijungima(vartotojoVardas, slaptazodis)) {
                 System.out.println("Prisijungimas sėkmingas!");
+                TableView<Pazymiai> tableViewPazymiai;
+                tableViewPazymiai = new TableView<>();
 
                 // Sukuriame Alert langą su pranešimu apie sėkmingą prisijungimą
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -70,12 +72,14 @@ public class HelloApplication extends Application {
                     // Atidaro naują langą su pažymiais
                     Stage studentasStage = new Stage();
                     studentasStage.setTitle("Pazymiai");
-                    List<Pazymiai> pazymiai = new ArrayList<>();
 
+                    List<Pazymiai> pazymiai = PazymiaiDAO.getPazymiaiByVartotojoVardas(vartotojoVardas);
 
-                    ObservableList<Pazymiai> observablePazymiai = FXCollections.observableArrayList(pazymiai);
-                    // Grąžina studento pažymius
-                    pazymiai = PazymiaiDAO.getPazymiaiByVartotojoVardas(String.valueOf(GautiVartotojoId.gautiVartotojoId(vartotojoVardas, slaptazodis)));
+                    ObservableList<Pazymiai> observablePazymiai = FXCollections.observableArrayList();
+
+                    observablePazymiai.addAll(pazymiai);
+
+                    tableViewPazymiai.setItems(observablePazymiai);
 
                     // Sukuria lentelę, kurioje bus rodomi pažymiai
                     TableView<Pazymiai> pazymiaiLentele = new TableView<>();

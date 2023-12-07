@@ -1,5 +1,4 @@
 package com.example.demo;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -19,7 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
 
-public class HelloApplication extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
@@ -73,7 +72,7 @@ public class HelloApplication extends Application {
                     Stage studentasStage = new Stage();
                     studentasStage.setTitle("Pazymiai");
 
-                    List<Pazymiai> pazymiai = PazymiaiDAO.getPazymiaiByVartotojoVardas(vartotojoVardas);
+                    List<Pazymiai> pazymiai = GautiPazymius.getPazymiaiByVartotojoVardas(vartotojoVardas);
 
                     ObservableList<Pazymiai> observablePazymiai = FXCollections.observableArrayList();
 

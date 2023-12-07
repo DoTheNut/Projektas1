@@ -8,7 +8,7 @@ public class Prisijungimas {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dienynas", "root", "");
 
-            String sql = "SELECT * FROM vartotojai WHERE username = ? AND password = ?";
+            String sql = "SELECT * FROM vartotojas WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, vartotojoVardas);
             statement.setString(2, slaptazodis);

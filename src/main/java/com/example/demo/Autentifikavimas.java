@@ -10,7 +10,7 @@ public class Autentifikavimas {
         String slaptazodisDB = "";
 
         try (Connection connection = DriverManager.getConnection(url, naudotojas, slaptazodisDB)) {
-            String sql = "SELECT role FROM vartotojai WHERE username = ? AND password = ?";
+            String sql = "SELECT role FROM vartotojas WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, vartotojoVardas);
             statement.setString(2, slaptazodis);
@@ -22,6 +22,6 @@ public class Autentifikavimas {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; // Jei buvo klaida arba vartotojas nerastas, grąžiname null
+        return null;
     }
 }

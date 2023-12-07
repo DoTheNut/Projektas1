@@ -10,7 +10,7 @@ public class GautiVartotojoId {
 
     public static int gautiVartotojoId(String vartotojoVardas, String slaptazodis) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sql = "SELECT user_id FROM vartotojai WHERE username = ? AND password = ?";
+            String sql = "SELECT user_id FROM vartotojas WHERE username = ? AND password = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, vartotojoVardas);
